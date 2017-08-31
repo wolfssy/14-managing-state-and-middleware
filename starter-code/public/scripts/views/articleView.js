@@ -4,7 +4,8 @@ var app = app || {};
 (function(module) {
   const articleView = {};
 
-  // COMMENT: What is this function doing? Where is it called? Does it call any other functions, and if so, in what file(s) do those function(s) live?
+  // COMMENT(done): What is this function doing? Where is it called? Does it call any other functions, and if so, in what file(s) do those function(s) live?
+  // This figures out how many days ago an article was written and then puts that into publishStatus then renders it to the handlebars template in the html.
   const render = function(article) {
     let template = Handlebars.compile($('#article-template').text());
 

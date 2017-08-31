@@ -13,7 +13,8 @@ var app = app || {};
 
   const render = Handlebars.compile($('#repo-template').text());
 
-  // COMMENT: What is this function doing? Where is it called? Does it call any other functions, and if so, in what file(s) do those function(s) live?
+  // COMMENT(done): What is this function doing? Where is it called? Does it call any other functions, and if so, in what file(s) do those function(s) live?
+  // ui() relates to the about link on the nave bar in the HTML. This function pulls up the about page and empties it then shows the repo information while hiding any about siblings. Called on page load when user selects 'about'. The page load then loads info from repos.
   repoView.index = function() {
     ui();
 
