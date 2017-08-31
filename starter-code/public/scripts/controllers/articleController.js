@@ -4,8 +4,8 @@ var app = app || {};
 (function(module) {
   const articleController = {};
 
-  // COMMENT: What is this function doing? Where is it called? Does it call any other functions, and if so, in what file(s) do those function(s) live?
-  // (put your response in a comment here)
+  // COMMENT:(done) What is this function doing? Where is it called? Does it call any other functions, and if so, in what file(s) do those function(s) live?
+  //This function is loading the specific article that is selected by pulling it from articleView.  It's called on page load because its encapsulated in an IIFE.  articleView.index lives in articleView.js
   articleController.index = (ctx) => app.articleView.index(ctx.articles);
 
   // REVIEW: Middleware for grabbing one article by ID:
@@ -15,8 +15,8 @@ var app = app || {};
       next();
     };
 
-    // COMMENT: What is this function doing? Where is it called? Does it call any other functions, and if so, in what file(s) do those function(s) live?
-    // (put your response in a comment here)
+    // COMMENT:(done) What is this function doing? Where is it called? Does it call any other functions, and if so, in what file(s) do those function(s) live?
+    //Its looking for the specific article and loading the context. Its called when user types into the URL. Its called from this IIFE in this js file. findWhere is in article.js, it's a method to query the DB for a record, based on criteria.
     app.Article.findWhere('article_id', ctx.params.article_id, articleData);
   };
 

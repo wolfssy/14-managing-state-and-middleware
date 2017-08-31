@@ -8,7 +8,7 @@ const requestProxy = require('express-request-proxy'); // REVIEW: We've added a 
 const PORT = process.env.PORT || 3000;
 const app = express();
 // const conString = 'postgres://USERNAME:PASSWORD@HOST:PORT';
-const conString = ''; // TODO: Don't forget to set your own conString
+const conString = process.env.DATABASE_URL || 'postgres://localhost:5432/kilovolt'; // TODO(done): Don't forget to set your own conString
 const client = new pg.Client(conString);
 client.connect();
 client.on('error', err => console.error(err));
@@ -18,8 +18,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('./public'));
 
 
-// COMMENT: What is this function doing? Why do we need it? Where does it receive a request from?
-// (put your response in a comment here)
+// COMMENT:(Done) What is this function doing? Why do we need it? Where does it receive a request from?
+// It pulls off URL parameters from the AJAX request. We need this to get our GitHub token from the heroku env. It receives the request as it's heard from app.get('/github/*', proxyGitHub).
 function proxyGitHub(request, response) {
   console.log('Routing GitHub request for', request.params[0]);
   (requestProxy({
@@ -29,8 +29,8 @@ function proxyGitHub(request, response) {
 }
 
 
-// COMMENT: What is this route doing? Where does it receive a request from?
-// (put your response in a comment here)
+// COMMENT:(Done) What is this route doing? Where does it receive a request from?
+// This route is waiting on a call to be sent to the /new file by the user when they click new.  So it's requesting the new.html page from the root ./public directory.
 app.get('/new', (request, response) => response.sendFile('new.html', {root: './public'}));
 app.get('/admin', (request, response) => response.sendFile('admin.html', {root: './public'}));
 app.get('/github/*', proxyGitHub);
@@ -106,8 +106,8 @@ app.post('/articles', function(request, response) {
 });
 
 
-// COMMENT: What is this route doing? Where does it receive a request from?
-// (put your response in a comment here)
+// COMMENT:(Done) What is this route doing? Where does it receive a request from?
+// This route is looking for a specific author and loading every article they have made.  It receives the request from the form field selection tab of Author.  It sends the request to the controller for the specific author, then gets that author's data from the model and updates the page.
 app.put('/articles/:id', (request, response) => {
   client.query(`
     UPDATE authors
