@@ -1,6 +1,6 @@
 # Portfolio Assignment for Class 14 - Managing State
 
-In our blog, we used middleware to intercept our routes and control the view layer of our application. You will need to do the same with your portfolio, along with any additional refactoring that you deem fit.
+Do a code review with your partner to identify and remedy any lingering pieces of your individual portfolios. For all items identified and discussed, make a GitHub Issue in the portfolio repo, linking to the individual lines of code as appropriate.
 
 ## Technical Requirements and Grading Rubric
  - Ensure your code passes ESLint.
